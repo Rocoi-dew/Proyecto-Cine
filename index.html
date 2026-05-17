@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILMAMOOD | Explora tus Emociones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <section class="logo">FILMAMOOD</section>
+        <nav class="menuNavegador">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#animo">Emociones</a></li>
+                <li><a href="#explorar">Explorar</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+             <button id="theme-toggle" class="theme-toggle">🦓</button>
+             <button class="btn-nav-primary">
+                 <span class="btn-icon">👤</span>
+                 <span class="btn-text">Iniciar sesión</span>
+             </button> 
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="main-section">
+            <h2>¿Cómo quieres<br><em>sentirte</em> hoy?</h2> 
+            <p>Entender que el cine no solo se ve, se siente.</p>
+         
+            <form class="form-registro"> 
+                 <input type="email" id="email-usuario" placeholder="Emociónate..." required>
+                 <button type="submit" class="btn-enviar">tu@email</button>
+            </form>
+        </section>
+        
+        <section id="animo" class="main-section">
+            <h3>Quiero sentir...</h3>
+            <div class="animosToggle">
+                <button class="btn-mood btn-alegria"><span class="dot"></span>Alegría</button>
+                <button class="btn-mood btn-tristeza"><span class="dot"></span>Tristeza</button>
+                <button class="btn-mood btn-enfado"><span class="dot"></span>Enfado</button>         
+                <button class="btn-mood btn-calma"><span class="dot"></span>Calma</button>
+                <button class="btn-mood btn-miedo"><span class="dot"></span>Miedo</button>
+            </div>
+        </section> 
+
+        <section class="advanced-filters">
+            <span class="section-label">ENTONCES</span> 
+            
+            <div class="filter-others">
+                <h4>⏱️ ¿Cuánto tiempo tienes?</h4>
+                <div class="kids-buttons">
+                    <button type="button" class="btn-kid" data-filter="corto">⚡ Algo rápido</button>
+                    <button type="button" class="btn-kid" data-filter="normal">🎬 Peli normal</button>
+                    <button type="button" class="btn-kid" data-filter="largo">🍿 Gran maratón</button>
+                </div>
+            </div>
+
+            <div class="filter-others">
+                <h4>🎨 ¿Qué estilo prefieres?</h4>
+                <div class="kids-buttons">
+                    <button type="button" class="btn-kid" data-filter="animacion">🧸 Dibujos</button>
+                    <button type="button" class="btn-kid" data-filter="real">🍿 Personajes reales</button>
+                </div>
+            </div>
+
+            <div class="filter-others">
+                <h4>⭐ ¿Qué descubrimos?</h4>
+                <div class="kids-buttons">
+                    <button type="button" class="btn-kid" data-order="rating">🏆 Las más top</button>
+                    <button type="button" class="btn-kid" data-order="nuevo">🆕 Lo más nuevo</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="explorar"></section>
+    </main>
+
+    <footer>
+        <p>© 2026 FILMAMOOD | Historias que merecen ser contadas.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
