@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FILMAMOOD | Explora tus Emociones</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="seccion-inicio"> 
 
     <header>
         <section class="logo">FILMAMOOD</section>
@@ -20,10 +20,7 @@
         </nav>
         <div class="header-actions">
              <button id="theme-toggle" class="theme-toggle">🦓</button>
-             <button class="btn-nav-primary">
-                 <span class="btn-icon">👤</span>
-                 <span class="btn-text">Iniciar sesión</span>
-             </button> 
+             <button class="search-btn" aria-label="Buscar película"></button>
         </div>
     </header>
 
@@ -33,8 +30,8 @@
             <p>Entender que el cine no solo se ve, se siente.</p>
          
             <form class="form-registro"> 
-                 <input type="email" id="email-usuario" placeholder="Emociónate..." required>
-                 <button type="submit" class="btn-enviar">tu@email</button>
+                 <input type="text" id="search-input" placeholder="Emociónate con una peli..." required>
+                 <button type="submit" class="btn-enviar">Buscar</button>
             </form>
         </section>
         
@@ -85,6 +82,6 @@
         <p>© 2026 FILMAMOOD | Historias que merecen ser contadas.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="javascript/script.js"></script>
 </body>
 </html>

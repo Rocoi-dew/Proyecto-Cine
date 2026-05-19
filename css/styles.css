@@ -1,0 +1,528 @@
+/* ==========================================================================
+   1. RESET & BASE (Evita desbordamientos y cortes laterales)
+========================================================================== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================================================
+   2. VARIABLES (MODO CLARO)
+========================================================================== */
+
+:root{
+    --primary: #5B8CFF;
+    --secondary: #FF71B8;
+    --accent: #FF8E53;
+
+    --bg: #f4f7ff;
+    --card: #ffffff;
+    --text: #162033;
+    --muted: #667085;
+    --soft: #dbe7ff;
+    --border: #e9edff;
+
+    --shadow: 0 8px 20px rgba(91,140,255,.10);
+    --glass: rgba(255,255,255,.75);
+
+    /* Colores Emociones - Modo Claro */
+    --alegria: #FFD84D;
+    --bg-alegria: #fff7cc;
+
+    --tristeza: #5BA8FF;
+    --bg-tristeza: #eef5ff;
+
+    --enfado: #FF6B81;
+    --bg-enfado: #ffe5ea;
+
+    --calma: #00C2A8;
+    --bg-calma: #e9fff8;
+
+    --miedo: #9B7BFF;
+    --bg-miedo: #f1eaff;
+
+    --font-title: 'Fredoka', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+}
+
+/* ==========================================================================
+   3. DARK MODE (Configuración optimizada de contraste)
+========================================================================== */
+
+body.dark-mode{
+    --bg: #1f1b3a;
+    --card: #2a2550;
+    --text: #f8f7ff;
+    --muted: #c7c2e8;
+    --soft: #3b3566;
+    --border: #4a4477;
+    --shadow: 0 8px 20px rgba(0,0,0,.40);
+    --glass: rgba(31, 27, 58, 0.8);
+
+    /* Ajuste de Fondos de Emociones en Modo Oscuro (Evita el efecto lavado) */
+    --bg-alegria: #4a4120;
+    --bg-tristeza: #1d3557;
+    --bg-enfado: #4e1a24;
+    --bg-calma: #0a3a34;
+    --bg-miedo: #2e1f4d;
+}
+
+/* ==========================================================================
+   4. HEADER & NAVBAR (100% Responsive)
+========================================================================== */
+
+header{
+    width: 100%;
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--glass);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.logo{
+    font-size: clamp(1.5rem, 5vw, 2rem); /* Se encoge si la pantalla es muy pequeña */
+    font-family: var(--font-title);
+    font-weight: 800;
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.menuNavegador{
+    display: none;
+}
+
+.menuNavegador ul{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.menuNavegador a{
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 800;
+    transition: color 0.2s ease;
+}
+
+.menuNavegador a:hover{
+    color: var(--primary);
+}
+
+.header-actions{
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+}
+
+.theme-toggle,
+.search-btn{
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.5rem; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    padding: 6px;
+}
+
+.theme-toggle:hover,
+.search-btn:hover {
+    transform: scale(1.15);
+}
+
+.search-btn::before{
+    content: "🔍";
+}
+
+/* ==========================================================================
+   5. HERO (INICIO - Ajustado para móviles pequeños)
+========================================================================== */
+
+#inicio{
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding: 30px 16px;
+    border-radius: 24px;
+    background: linear-gradient(
+        135deg,
+        rgba(91,140,255,.15),
+        rgba(255,113,184,.12)
+    );
+    text-align: center;
+}
+
+#inicio h2{
+    font-size: clamp(1.8rem, 7vw, 4rem); /* Control total del tamaño de letra en móvil */
+    line-height: 1.15;
+    font-family: var(--font-title);
+    margin-bottom: 16px;
+}
+
+#inicio em{
+    color: var(--primary);
+    font-style: normal;
+}
+
+#inicio p{
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   6. FORMULARIO
+========================================================================== */
+
+.form-registro{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--card);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease;
+}
+
+.form-registro input{
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 12px;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.btn-enviar{
+    border: none;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    color: white;
+    padding: 14px;
+    border-radius: 999px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-enviar:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+/* ==========================================================================
+   7. SECCIÓN EMOCIONES (Fluida - No se rompe en pantallas minis)
+========================================================================== */
+
+.main-section{
+    width: 90%;
+    max-width: 1200px;
+    margin: 45px auto 0;
+    padding: 0;
+}
+
+#animo h3{
+    font-size: 1.5rem;
+    font-family: var(--font-title);
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 5px solid var(--primary);
+}
+
+.animosToggle{
+    display: grid;
+    /* auto-fit asegura que si no caben dos botones a 140px, se apilen solos */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+    gap: 12px;
+}
+
+.btn-mood{
+    background: var(--card);
+    border: 1px solid transparent;
+    padding: 14px 12px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 16px;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--text);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform .25s ease, background-color .25s ease, border-color .25s ease, color .25s ease;
+}
+
+.btn-mood:hover{
+    transform: translateY(-4px);
+}
+
+.btn-alegria:hover{ background-color: var(--bg-alegria) !important; border-color: var(--alegria); }
+.btn-tristeza:hover{ background-color: var(--bg-tristeza) !important; border-color: var(--tristeza); }
+.btn-enfado:hover{ background-color: var(--bg-enfado) !important; border-color: var(--enfado); }
+.btn-calma:hover{ background-color: var(--bg-calma) !important; border-color: var(--calma); }
+.btn-miedo:hover{ background-color: var(--bg-miedo) !important; border-color: var(--miedo); }
+
+.dot{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.btn-alegria .dot{ background: var(--alegria); }
+.btn-tristeza .dot{ background: var(--tristeza); }
+.btn-enfado .dot{ background: var(--enfado); }
+.btn-calma .dot{ background: var(--calma); }
+.btn-miedo .dot{ background: var(--miedo); }
+
+/* ==========================================================================
+   8. FILTROS AVANZADOS
+========================================================================== */
+
+.advanced-filters{
+    width: 90%;
+    max-width: 1200px;
+    margin: 45px auto 0;
+    background: var(--card);
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease;
+}
+
+.section-label{
+    display: block;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-family: var(--font-title);
+}
+
+.filter-others{
+    margin-bottom: 20px;
+}
+
+.filter-others h4{
+    margin-bottom: 12px;
+    font-family: var(--font-title);
+}
+
+.kids-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-kid{
+    border: 1px solid transparent;
+    background: var(--soft);
+    color: var(--text);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+
+.btn-kid:hover{
+    background: var(--primary);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   9. EXPLORAR
+========================================================================== */
+
+#explorar{
+    width: 90%;
+    max-width: 1200px;
+    margin: 45px auto 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.card{
+    background: var(--card);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform .3s ease, background 0.3s ease;
+}
+
+.card:hover{
+    transform: translateY(-6px);
+}
+
+.card-visual{
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-info-content{
+    padding: 16px;
+}
+
+.card-info-content h3{
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    font-family: var(--font-title);
+}
+
+.card-info-content span{
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.tags{
+    padding: 0 16px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+[class^="tag-"]{
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   10. FOOTER
+========================================================================== */
+
+footer{
+    margin-top: 50px;
+    padding: 24px 16px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background: var(--card);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+footer p{
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   11. MEDIA QUERIES (TABLET Y ESCRITORIO)
+========================================================================== */
+
+@media (min-width: 768px){
+    header{
+        padding: 1rem 3rem; 
+    }
+
+    .menuNavegador{
+        display: flex;
+    }
+
+    #inicio{
+        width: 92%;
+        padding: 60px 40px;
+    }
+
+    .form-registro{
+        flex-direction: row;
+        align-items: center;
+        border-radius: 999px;
+        padding: 12px;
+    }
+
+    .form-registro input {
+        padding-left: 20px;
+    }
+
+    .btn-enviar{
+        width: auto;
+        padding: 16px 28px;
+    }
+
+    .main-section, .advanced-filters, #explorar {
+        width: 92%;
+    }
+
+    .animosToggle{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .btn-mood{
+        min-width: 180px;
+        justify-content: center;
+        padding-left: 16px;
+        font-size: 1rem;
+    }
+
+    .advanced-filters {
+        padding: 30px;
+    }
+
+    #explorar{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px){
+    #explorar{
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
