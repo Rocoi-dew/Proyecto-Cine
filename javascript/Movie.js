@@ -9,8 +9,6 @@ export class Movie {
         this._rating = data.vote_average ? data.vote_average.toFixed(1) : "Pendiente";
         this._poster = data.poster_path ? `${IMG}${data.poster_path}` : 'img/placeholder.jpg';
         this._estudio = data.production_companies?.[0]?.name || "Studio";
-        this._duracion = data.runtime || "?";
-        this._pais = data.production_countries?.[0]?.iso_3166_1 || "??";
 
         // BADGE
         const añoActual = new Date().getFullYear();
@@ -19,7 +17,7 @@ export class Movie {
             this._badge = "Novedad";
 
         } else if (this._rating >= 8.5) {
-            this._badge = "Destacada";
+            this._badge = "Top";
 
         } else {
             this._badge = "Clásico";
@@ -46,10 +44,6 @@ export class Movie {
         return this._duracion;
     }
 
-    get pais() {
-        return this._pais;
-    }
-
     get año() {
         return this._año;
     }
@@ -66,16 +60,13 @@ export class Movie {
 
         article.innerHTML = `
             <div class="card-visual">
-
                 <img class="card-img" src="${this.poster}"  alt="${this.titulo}" loading="lazy">
-
                 <span class="card-rating">★ ${this.rating}</span>
                 <span class="card-badge">${this.badge}</span>
-
             </div>
             <div class="card-info-content">
                 <h3>${this.titulo}</h3>
-                <span>${this.estudio} · ${this.año} · ${this.duracion} min · ${this.pais}</span>
+                <span>${this.estudio} · ${this.año}</span>
             </div>
         `;
 

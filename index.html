@@ -29,11 +29,11 @@
             <h2>¿Cómo quieres<br><em>sentirte</em> hoy?</h2> 
             <p>Entender que el cine no solo se ve, se siente.</p>
          
-            <form class="form-registro"> 
-                 <input type="text" id="search-input" placeholder="Emociónate con una peli..." required>
-                 <button type="submit" class="btn-enviar">Buscar</button>
-            </form>
-        </section>
+             <form class="form-registro" onsubmit="event.preventDefault();"> 
+             <input type="text" id="search" placeholder="Emociónate con una peli..." required>
+             <button type="submit" class="btn-enviar">Buscar</button>
+             </form>
+         </section>
         
         <section id="animo" class="main-section">
             <h3>Quiero sentir...</h3>
@@ -75,7 +75,10 @@
             </div>
         </section>
 
-        <section id="explorar"></section>
+        <section id="explorar">
+              <div id="contenedor-peliculas"></div>
+        </section>
+        
     </main>
 
     <footer>

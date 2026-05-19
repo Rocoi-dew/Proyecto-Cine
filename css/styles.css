@@ -183,6 +183,8 @@ header{
         rgba(255,113,184,.12)
     );
     text-align: center;
+    scroll-margin-top: 100px;
+
 }
 
 #inicio h2{
@@ -251,7 +253,7 @@ header{
 }
 
 /* ==========================================================================
-   7. SECCIÓN EMOCIONES (Fluida - No se rompe en pantallas minis)
+   7. SECCIÓN EMOCIONES 
 ========================================================================== */
 
 .main-section{
@@ -267,6 +269,8 @@ header{
     margin-bottom: 20px;
     padding-left: 12px;
     border-left: 5px solid var(--primary);
+    scroll-margin-top: 100px;
+    scroll-behavior: smooth;
 }
 
 .animosToggle{
@@ -384,6 +388,7 @@ header{
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
+    scroll-margin-top: 100px;
 }
 
 .card{
@@ -461,12 +466,12 @@ footer p{
 }
 
 /* ==========================================================================
-   11. MEDIA QUERIES (TABLET Y ESCRITORIO)
+   11. MEDIA QUERIES 
 ========================================================================== */
 
 @media (min-width: 768px){
     header{
-        padding: 1rem 3rem; 
+        padding: 1.1rem 3rem; 
     }
 
     .menuNavegador{
@@ -474,7 +479,7 @@ footer p{
     }
 
     #inicio{
-        width: 92%;
+        width: 90%;
         padding: 60px 40px;
     }
 
@@ -487,11 +492,6 @@ footer p{
 
     .form-registro input {
         padding-left: 20px;
-    }
-
-    .btn-enviar{
-        width: auto;
-        padding: 16px 28px;
     }
 
     .main-section, .advanced-filters, #explorar {
@@ -523,6 +523,6 @@ footer p{
 
 @media (min-width: 1200px){
     #explorar{
-        grid-template-columns: repeat(3, 1fr); 
+        grid-template-columns: repeat(3, 3fr); 
     }
 }
