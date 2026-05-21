@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="seccion-inicio"> 
+<body> 
 
     <header>
         <section class="logo">FILMAMOOD</section>
@@ -20,7 +20,6 @@
         </nav>
         <div class="header-actions">
              <button id="theme-toggle" class="theme-toggle">🦓</button>
-             <button class="search-btn" aria-label="Buscar película"></button>
         </div>
     </header>
 
@@ -29,7 +28,7 @@
             <h2>¿Cómo quieres<br><em>sentirte</em> hoy?</h2> 
             <p>Entender que el cine no solo se ve, se siente.</p>
          
-             <form class="form-registro" onsubmit="event.preventDefault();"> 
+             <form class="form-registro"> 
              <input type="text" id="search" placeholder="Emociónate con una peli..." required>
              <button type="submit" class="btn-enviar">Buscar</button>
              </form>
@@ -86,5 +85,23 @@
     </footer>
 
     <script type="module" src="javascript/script.js"></script>
+
+    <div id="miModal" class="modal-container">
+    
+    <div class="modal-contenido">
+        <button id="cerrarModal" class="btn-cerrar">&times;</button>
+        
+        <div class="video-contenedor">
+            <iframe id="modalVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="info-contenedor">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
+

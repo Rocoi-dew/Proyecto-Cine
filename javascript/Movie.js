@@ -6,9 +6,11 @@ export class Movie {
 
         this._titulo = data.title;
         this._año = data.release_date ? data.release_date.split('-')[0] : "Desconocido";
-        this._rating = data.vote_average ? data.vote_average.toFixed(1) : "Pendiente";
+        this._rating = data.vote_average ? Number(data.vote_average.toFixed(1)) : 0;
         this._poster = data.poster_path ? `${IMG}${data.poster_path}` : 'img/placeholder.jpg';
-        this._estudio = data.production_companies?.[0]?.name || "Studio";
+        this._estudio = (data.production_companies && data.production_companies[0]) 
+                    ? data.production_companies[0].name 
+                    : "Studio";
 
         // BADGE
         const añoActual = new Date().getFullYear();
@@ -38,10 +40,6 @@ export class Movie {
 
     get estudio() {
         return this._estudio;
-    }
-
-    get duracion() {
-        return this._duracion;
     }
 
     get año() {

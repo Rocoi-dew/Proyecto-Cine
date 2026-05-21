@@ -1,20 +1,16 @@
 /* BOTÓN MODO OSCURO */
-const btn = document.getElementById("theme-toggle");
-const currentTheme = localStorage.getItem("theme");
+export const inicializarModoOscuro = () => {
+  const btn = document.getElementById("theme-toggle");
+  const currentTheme = localStorage.getItem("theme");
 
-if (currentTheme === "dark") {
-  document.body.classList.add("dark-mode");
-}
+  // Aplicar tema guardado
+  document.body.classList.toggle("dark-mode", currentTheme === "dark");
 
-if (btn) {
+  // Click del botón
+  if (btn) {
     btn.addEventListener("click", () => {
-    
-      document.body.classList.toggle("dark-mode");
-      
-      let theme = "light";
-      if (document.body.classList.contains("dark-mode")) {
-        theme = "dark";
-      }
-      localStorage.setItem("theme", theme);
+      const esOscuro = document.body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", esOscuro ? "dark" : "light");
     });
-}
+  }
+};
