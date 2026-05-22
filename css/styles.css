@@ -103,7 +103,7 @@ header{
 }
 
 .logo{
-    font-size: clamp(1.5rem, 5vw, 2rem); /* Se encoge si la pantalla es muy pequeña */
+    font-size: clamp(1.5rem, 5vw, 2rem); 
     font-family: var(--font-title);
     font-weight: 800;
     background: linear-gradient(
@@ -178,7 +178,7 @@ header{
 }
 
 #inicio h2{
-    font-size: clamp(1.8rem, 7vw, 4rem); /* Control total del tamaño de letra en móvil */
+    font-size: clamp(1.8rem, 7vw, 4rem); 
     line-height: 1.15;
     font-family: var(--font-title);
     margin-bottom: 16px;
@@ -466,7 +466,6 @@ footer p{
        align-items: center;
     }
 
-    @media (min-width: 768px){
 
     .menuNavegador{
         display: flex;
@@ -521,8 +520,7 @@ footer p{
     #contenedor-peliculas{
         grid-template-columns: repeat(2, 1fr);
     }
-   }
-
+   
 @media (min-width: 1200px){
     #contenedor-peliculas{
         grid-template-columns: repeat(3, 1fr);
@@ -662,11 +660,11 @@ footer p{
 
 @media (min-width: 1200px) {
     .modal-contenido {
-        max-width: 800px; /* Un poco más amplio para que el video luzca espectacular */
+        max-width: 800px; 
     }
 
     .info-contenedor h2 {
-        font-size: 26px; /* Título imponente */
+        font-size: 26px; 
     }
 }
 
